@@ -1,0 +1,370 @@
+h1 {
+  font-size: 4rem;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  background-color: #fffff8f8;
+  margin: 0;
+  transform: translate(-0.75rem,-0.75rem); 
+  border: 2px solid #111;
+  padding: 0.25em;
+  line-height: 1;
+  width: fit-content;
+}
+
+h2:hover{
+  scale: 1.01;
+}
+
+body {
+  font-family: 'Geist Pixel', sans-serif;
+  font-size: 16px;
+  color: #111;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/79/Hurricane_Dot_weather_map%2C_August_6%2C_1959_%283008714%29.jpg');
+}
+
+/* link color swag */
+a:link { color: #111;  }
+a:visited { color: #111; }
+a:hover { color: #be8690; }
+a:active { color: #111; }
+
+/*nav bar things*/
+nav {
+  display: flex;
+  flex: auto 1 1;
+  justify-content: space-evenly;
+  align-self: center;
+}
+
+nav a {
+  font-size: clamp(0.75rem, 2.5vw, 4rem);
+  padding: 0.5%;
+  background-color: #e9e5d8ea;
+  border: 0.25vw solid #be8690;
+  border-radius: 0.5rem;
+  box-shadow: -0.2vw -0.2rem #d7c5b8, -0.4vw -0.4rem #433f5d ;
+  transition: 
+    scale 1s ease-in-out,
+    color 1s ease-in-out,
+    box-shadow 1s ease-in-out;
+  text-decoration: none;
+  padding-bottom: 0;
+}
+
+nav a:hover {
+  scale: 1.1;
+  box-shadow: -0.2vw -0.2rem #708fa9, -0.6vw -0.6rem 0.1rem #eaf7f3;
+}
+
+#content {
+  display: grid;
+  max-width: 100%;
+  width: 100vw;
+  grid-gap: 1rem;
+  margin: 0 auto;
+  grid-template:
+    "header header header"
+    "asideLeft main asideRight"
+    "footer footer footer"
+    auto / 20vw auto 20vw;
+}
+
+header { 
+  grid-area: header; 
+  text-align: center;
+  justify-content: center;
+  margin-bottom: -10px;
+}
+main, aside {
+  transition: 
+    transform 1s ease-in-out, 
+    background-color 1s ease-in-out;
+}
+main:hover, aside:hover {
+  transform: scale(1.01);
+  background-color: #fffff8fa;
+}
+.aside--left {
+  grid-area: asideLeft;
+  background-color: #fffff8f3;
+  border: 3px dotted #111;
+  border-radius: 12.5% 0 0 12.5%;
+  padding: 0.25rem;
+  margin: 0.25rem;
+}
+.aside--right {
+  grid-area: asideRight;
+  background-color: #fffff8f3;
+  border: 3px dotted #111;
+  border-radius: 0 12.5% 12.5% 0;
+  padding: 0.25rem;
+  margin: 0.25rem;
+}
+
+main { 
+  grid-area: main; 
+  background-color: #fffff8fe;
+  border: 3px dotted #111;
+  padding: 1rem;
+  margin: 0.25rem;
+  min-height: 38rem;
+}
+
+.blog-posts {
+  max-height: 40rem;
+  overflow-y: auto;
+}
+
+footer { 
+  grid-area: footer; 
+  text-align: center;
+  justify-self: center;
+  width: fit-content;
+  padding: 0.25rem;
+  background-color: #fffff8bb;
+}
+
+/*typing effect from https://dev.to/afif/a-scalable-css-only-typewriter-effect-2opn*/
+.type {
+  display:inline-flex;
+}
+
+.type span {
+  height:1.2em;
+  width:0%;
+  word-break:break-all;
+  overflow: hidden;
+  animation:
+    c 1s infinite steps(1),  
+    t 4s linear infinite alternate;
+}
+.type span:before {
+  content:" ";
+  display:inline-block;
+}
+
+@keyframes t{
+  90%,100% {width:100%}
+}
+
+@keyframes c{
+  0%,100%{box-shadow:5px 0 0 #0000}
+  50%    {box-shadow:5px 0 0 #111  }
+}
+
+/* link slide up effect */
+.link--slide-up-replace {
+  display: inline-flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 1.2em;
+  text-decoration: none;
+}
+.link-text-top,
+.link-text-bottom {
+  display: block;
+  transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.link-text-bottom:hover { color: #be8690; }
+.link--slide-up-replace:hover .link-text-top,
+.link--slide-up-replace:hover .link-text-bottom {
+  transform: translateY(-92.5%);
+}
+
+/*songs page css*/
+/*changes color of every even row in a list*/
+li:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.release-details summary {
+  cursor: pointer;
+  list-style: none;
+  background: linear-gradient(currentColor 0 0) 
+    bottom left/
+    var(--underline-width, 0%) 0.1em
+    no-repeat;
+  display: inline-block;
+  padding: 0 .5em 0.2em;
+  text-decoration: none;
+  transition: background-size 0.5s;
+}
+
+.release-details summary:hover {
+  --underline-width: 100%;
+}
+
+.release-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.release-details summary::after {
+  font-size: 0.75rem;
+  content: " +";
+}
+
+.release-details[open] summary::after {
+  content: " −";
+}
+
+.release-details[open] summary {
+  font-weight: bold;
+}
+
+.release-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.25rem 0.25rem;
+  border: 0.2rem double #111;
+  text-align: left;
+}
+
+.release-box ol {
+  margin-top: 0;
+  padding-left: 1.5rem;
+}
+
+.release-box img {
+  width: min(12rem, 100%);
+  height: 12rem;
+  aspect-ratio: 1;
+}
+
+.songs-page table:has(.release-details[open]) :is(th:last-child, td:last-child) {
+  display: none;
+}
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.dropcontent {
+  padding: 0 1rem;
+  max-height: 0;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  transition: max-height 0.5s ease-out;
+}
+
+/*table*/
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+td, th {
+  border: 1px solid #fcfcfc;
+  text-align: left;
+  padding: 0.1rem;
+}
+
+.music-icons {
+  display: inline-block;
+  filter: grayscale(1) contrast(250%); 
+  height: 0.75rem !important; 
+  width: 0.75rem !important;
+}
+
+.social-icons {
+  display: inline-block;
+  filter: grayscale(1) contrast(250%); 
+  height: 2rem !important; 
+  width: 2rem !important;
+}
+
+/*makes YouTube videos look normal and responsive*/
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/*animates nav button*/
+@keyframes nav--ambient {
+  0% {
+    transform: scale(1) rotate(-0.5deg);/* Normal size */
+  }
+  50% {
+    transform: scale(1.1) rotate(0.5deg); /* Scaled up (30% larger) */
+  }
+  100% {
+    transform: scale(1) rotate(-0.5deg); /* Normal size */
+  }
+}
+
+.current-nav {
+  border: 0.3vw dashed #be8690;
+  animation: nav--ambient 6s infinite ease-in-out;
+}
+
+.current-nav:hover {
+  animation-play-state: paused;
+}
+
+/*mobile responsiveness things*/
+@media (min-width: 801px) {
+  #content.live-page {
+    grid-template-columns: 30% auto 10%;
+  }
+}
+
+@media (min-width: 801px) {
+  #content.songs-page {
+    grid-template-columns: 5% auto 5%;
+  }
+}
+
+@media (max-width: 1200px) {
+  #content {
+  grid-template:
+    "header header header"
+    "asideLeft main main"
+    "asideRight asideRight asideRight"
+    "footer footer footer"
+    auto / 220px auto 220px;
+  }
+}
+@media (max-width: 800px) {
+  #content {
+    grid-template:
+      "header"
+      "asideLeft"
+      "main"
+      "asideRight"
+      "footer"
+      / auto; 
+    }
+
+  .songs-page table tr td:nth-child(3), table tr td:nth-child(1) {
+  font-size: 0.45rem; 
+  }
+
+  main { 
+    min-height: 18rem;
+  }
+}
