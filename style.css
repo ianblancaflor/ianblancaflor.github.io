@@ -20,7 +20,7 @@ h2:hover{
 
 body {
   font-family: 'Geist Pixel', sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   color: #111;
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/79/Hurricane_Dot_weather_map%2C_August_6%2C_1959_%283008714%29.jpg');
 }
@@ -30,6 +30,10 @@ a:link { color: #111;  }
 a:visited { color: #111; }
 a:hover { color: #be8690; }
 a:active { color: #111; }
+
+p {
+  margin: 0 0.75rem;
+}
 
 /*nav bar things*/
 nav {
@@ -276,6 +280,7 @@ td, th {
   padding: 0.1rem;
 }
 
+/*icons styling*/
 .music-icons {
   display: inline-block;
   filter: grayscale(1) contrast(250%); 
@@ -365,6 +370,6 @@ td, th {
   }
 
   main { 
-    min-height: 18rem;
+    min-height: 10rem;
   }
 }
