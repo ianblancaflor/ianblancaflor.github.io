@@ -39,6 +39,23 @@
     font-display: swap;
 }
 
+:root {
+    --bg-color: #fffff8;
+    --text-color: #111;
+    --h1-bg-color: lightblue;
+    --box2-color: lightskyblue;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+    --bg-color: #151515;
+    --text-color: #ddd;
+    --h1-bg-color: darkslategrey;
+    --box2-color: darkolivegreen;
+    }
+}
+
+
 /* Tufte CSS styles */
 html {
     font-size: 15px;
@@ -50,8 +67,8 @@ body {
     margin-right: auto;
     /*padding-left: 12.5%;*/
     font-family:  et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-    background-color: #fffff8;
-    color: #111;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     max-width: 1400px;
     counter-reset: sidenote-counter;
 }
@@ -60,17 +77,17 @@ h1 {
     font-weight: 400;
     margin-bottom: 1.5rem;
     font-size: 3.2rem;
-    background-color: lightblue; 
+    background-color: var(--h1-bg-color);
     margin: 0;
     padding: 2rem 0.5rem;
-    border: 2px solid #111;
+    border: 3px solid var(--text-color);
 }
 
 #center-title {
     text-align: center;
     font-weight: bold;
     font-size: 4rem;
-    background-color: #fffff880;
+    background-color: rgb(from var(--bg-color) r g b / 90%);
     border: 0.5rem double;
     border-radius: 5rem;
     padding: 0.5rem;
@@ -105,7 +122,7 @@ nav {
 nav a {
     font-size: clamp(0.75rem, 2.5vw, 3rem);
     padding: 0.5%;
-    background-color: #fffff8fa;
+    background-color: rgb(from var(--bg-color) r g b / 98%);
     border: 0.20rem double;
     border-radius: 0.5rem;
     transition: 
@@ -137,10 +154,10 @@ p.subtitle {
     font-size: 1.8rem;
     display: block;
     line-height: 1;
-    background-color: #fffff8; 
-    color: #111;
+    background-color: var(--bg-color); 
+    color: var(--text-color);
     padding: 1rem;
-    border: 3px dashed #111;
+    border: 3px dashed var(--text-color);
     width: 75%;
     transition-duration: 1s;
 }
@@ -150,23 +167,41 @@ p.subtitle:hover {
     rotate: -1.5deg;
 }
 
-/* Adds dark mode */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #151515;
-        color: #ddd;
-    }
-    nav a {
-        background-color: #151515;
-    }
-    h1 {
-        background-color: darkslategray;
-        border: 2px solid #ddd;
-    }
-    #center-title {
-        background-color: #151515;
-    }
+/*catalog page, taken from suboptimalism.neocities.org*/
+.catalog > * {
+    width: 45%;
 }
+
+.catalog li {
+    background-color: var(--bg-color);
+    border: 4px double var(--text-color);
+    box-shadow: var(--h1-bg-color) 0.3em 0.3em, var(--box2-color) 0.6em 0.6em;
+    padding: 5%;
+    margin-bottom: 5%;
+}
+
+.catalog h2 {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid darkolivegreen;
+}
+
+.flexwrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chronology ul {
+    list-style: none; 
+}
+
+.chronology dl {
+    padding-left: 5%;   
+}
+
+dd {
+    margin-bottom: 3%;
+}   
 
 .numeral {
     font-family: et-book-roman-old-style;
@@ -439,47 +474,6 @@ label.margin-toggle:not(.sidenote-number) {
     height: 100%;
 }
 
-/*catalog page, taken from suboptimalism.neocities.org*/
-.catalog > * {
-    width: 45%;
-}
-
-.catalog li {
-    background-color: #fffff8;
-    border: 4px double black;
-    box-shadow: lightblue 0.3em 0.3em, lightskyblue 0.6em 0.6em;
-    padding: 5%;
-    margin-bottom: 5%;
-    
-}
-
-.catalog h2 {
-    margin-top: 0;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid darkolivegreen;
-}
-
-.flexwrap {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.chronology ul {
-    list-style: none; 
-}
-
-.chronology dl {
-    padding-left: 5%;   
-}
-
-dd {
-    margin-bottom: 3%;
-}   
-
-li a {
-    		
-}
-
 @media (max-width: 760px) {
     body {
         width: 84%;
@@ -492,7 +486,7 @@ li a {
     }  
 
     .catalog li {
-        box-shadow: lightblue 0.2em 0.3em, lightskyblue -0.2em 0.6em;
+        box-shadow: var(--h1-bg-color) 0.2em 0.3em, var(--box2-color) -0.2em 0.6em;
     }
 
     ul {
@@ -580,14 +574,14 @@ li a {
   overflow: hidden;
   height: 1.2em;
   text-decoration: none;
-  color: #111;
+  color: var(--text-color);
 }
 .link-text-top,
 .link-text-bottom {
   display: block;
   transition: transform 0.35s cubic-bezier(0.77, 0, 0.175, 1);
 }
-.link-text-bottom { color: black; }
+.link-text-bottom { color: var(--text-color); }
 .link--slide-up-replace:hover .link-text-top,
 .link--slide-up-replace:hover .link-text-bottom {
   transform: translateY(-90%);
